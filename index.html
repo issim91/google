@@ -1,48 +1,15 @@
-<!DOCTYPE html>
-<html>
-<head>
-    <title>Google Login</title>
-    <meta name="google-signin-client_id" content="609550829109-m5gdf8j2f264bk47dm4kqplhjnucichj.apps.googleusercontent.com">
-    <!-- Compiled and minified CSS -->
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0-beta/css/materialize.min.css">
-    <!-- Compiled and minified JavaScript -->
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0-beta/js/materialize.min.js"></script>
-    <!-- Google Platform Script -->
-    <script src="https://apis.google.com/js/platform.js" async defer></script>
-    <script>
-        function onSignIn(googleUser) {
-            var id_token = googleUser.getAuthResponse().id_token;
-            console.log(id_token);
-            fetch('https://clutchpoints.4taps.me/user/auth/google/', {
-                method: 'POST',
-                headers: {
-                    'Content-Type': 'application/json'
-                },
-                body: JSON.stringify({ token: id_token })
-            })
-            .then(response => response.json())
-            .then(data => {
-                console.log(data);
-                // Optionally, redirect or update UI after successful authentication
-                window.location.href = "https://clutchpoints.4taps.me/user/auth/google/";
-            })
-            .catch(error => {
-                console.error('Error:', error);
-            });
-        }
-    </script>
-    <meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self' 'unsafe-inline' 'unsafe-eval' https://apis.google.com https://cdnjs.cloudflare.com; style-src 'self' 'unsafe-inline'; img-src 'self' data:; frame-src https://accounts.google.com; child-src https://accounts.google.com;">
-</head>
-<body>
-    <div class="col s12 m6 offset-m3 center-align">
-        <a class="oauth-container btn darken-4 white black-text" href="javascript:void(0);" onclick="document.querySelector('.g-signin2').click();" style="text-transform:none">
-            <div class="left">
-                <img width="20px" style="margin-top:7px; margin-right:8px" alt="Google sign-in"
-                    src="https://upload.wikimedia.org/wikipedia/commons/thumb/5/53/Google_%22G%22_Logo.svg/512px-Google_%22G%22_Logo.svg.png" />
-            </div>
-            Login with Google
-        </a>
-        <div class="g-signin2" data-onsuccess="onSignIn"></div>
-    </div>
-</body>
-</html>
+<div class="col s12 m6 offset-m3 center-align">
+    <a class="oauth-container btn darken-4 white black-text" href="/users/google-oauth/" style="text-transform:none">
+        <div class="left">
+            <img width="20px" style="margin-top:7px; margin-right:8px" alt="Google sign-in"
+                src="https://upload.wikimedia.org/wikipedia/commons/thumb/5/53/Google_%22G%22_Logo.svg/512px-Google_%22G%22_Logo.svg.png" />
+        </div>
+        Login with Google
+    </a>
+</div>
+
+<!-- Compiled and minified CSS -->
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0-beta/css/materialize.min.css">
+
+<!-- Compiled and minified JavaScript -->
+<script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0-beta/js/materialize.min.js"></script>
