@@ -3,12 +3,14 @@
 <head>
     <title>Google Login</title>
     <meta name="google-signin-client_id" content="609550829109-m5gdf8j2f264bk47dm4kqplhjnucichj.apps.googleusercontent.com">
-    <meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self' 'unsafe-inline' 'unsafe-eval' https://apis.google.com; style-src 'self' 'unsafe-inline'; img-src 'self' data:; frame-src https://accounts.google.com; child-src https://accounts.google.com;">
+    <!-- Генерация nonce на сервере для безопасности скриптов -->
+    <meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self' 'nonce-random123' https://apis.google.com; style-src 'self' 'unsafe-inline'; img-src 'self' data:; frame-src https://accounts.google.com; child-src https://accounts.google.com;">
 </head>
 <body>
     <div class="g-signin2" data-onsuccess="onSignIn"></div>
-    <script src="https://apis.google.com/js/platform.js" async defer></script>
-    <script>
+    <!-- Укажите nonce для скрипта -->
+    <script src="https://apis.google.com/js/platform.js" nonce="random123" async defer></script>
+    <script nonce="random123">
         console.log("Script loaded");
         function onSignIn(googleUser) {
             console.log("onSignIn");
