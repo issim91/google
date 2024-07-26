@@ -3,11 +3,10 @@
 <head>
     <title>Google Login</title>
     <meta name="google-signin-client_id" content="609550829109-m5gdf8j2f264bk47dm4kqplhjnucichj.apps.googleusercontent.com">
-    <meta http-equiv="Content-Security-Policy" content="default-src 'self'; img-src * 'unsafe-inline'; style-src * 'unsafe-inline';">
 </head>
 <body>
     <div class="g-signin2" data-onsuccess="onSignIn"></div>
-    <script src="platform.js" async defer></script>
+    <script src="https://apis.google.com/js/platform.js" async defer></script>
     <script>
         console.log("Script loaded");
        function onSignIn(googleUser) {
