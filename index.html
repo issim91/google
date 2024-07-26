@@ -9,9 +9,9 @@
     <script src="https://apis.google.com/js/platform.js" async defer></script>
     <script>
         console.log("Script loaded");
-        function onSignIn(googleUser) {
+       function onSignIn(googleUser) {
             var id_token = googleUser.getAuthResponse().id_token;
-            console.log(id_token)
+            console.log(id_token);
             fetch('https://clutchpoints.4taps.me/user/auth/google/', {
                 method: 'POST',
                 headers: {
@@ -20,6 +20,10 @@
                 body: JSON.stringify({ token: id_token })
             }).then(response => response.json()).then(data => {
                 console.log(data);
+                // Если вы хотите перенаправить пользователя после успешной авторизации, используйте window.location
+                window.location.href = "https://clutchpoints.4taps.me/user/auth/google/";
+            }).catch(error => {
+                console.error('Error:', error);
             });
         }
     </script>
